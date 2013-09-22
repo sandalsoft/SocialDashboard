@@ -1,4 +1,4 @@
-
+/*jshint -W117 */
 var Xboxactivity = Em.Object.extend({
   infoUrl: function() {
     return "http://www.google.com/search?q=" + this.get('title') + "&btnI";

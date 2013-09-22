@@ -1,3 +1,4 @@
+/*jshint -W117 */
 var Instagramactivity = Em.Object.extend({
   createdTime: function() {
     return moment.unix(this.get('created_time')).fromNow();

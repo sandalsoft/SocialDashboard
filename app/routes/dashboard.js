@@ -1,3 +1,4 @@
+/*jshint -W117 */
 var DashboardRoute = Ember.Route.extend({
   actions: {
     setupController: function(controller) {

@@ -1,3 +1,4 @@
+/*jshint -W117 */
 var Xboxprofile = Ember.Object.extend();
 
 Xboxprofile.reopenClass({
@@ -26,7 +27,7 @@ Xboxprofile.reopenClass({
           return profile;
         }) //ajax()
       ); //resolve
-    }) //promise
+    }); //promise
   }, //getProfile()
 }); //Xboxprofile   
 

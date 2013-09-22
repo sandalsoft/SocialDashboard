@@ -1,3 +1,4 @@
+/*jshint -W117 */
 var DashboardController = Em.ObjectController.extend({
   content: [],
   momentUpdateFormat: 'h:mm a',
