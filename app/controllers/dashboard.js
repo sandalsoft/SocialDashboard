@@ -1,5 +1,20 @@
 /*jshint -W117 */
+
 var DashboardController = Em.ObjectController.extend({
+  actions: {
+    // // Methods to get data for each module
+    // getXboxProfile: function(controller) {
+    //   console.log('DashboardController.actions.getXboxProfile')
+    //   Xboxprofile.find(localStorage.gamertag).then(function(xboxprofile) {
+    //     controller.set('xbox', xboxprofile);
+    //   });
+    // },
+    // getInstagramFeed: function(controller) {
+    //   Instagram.find(localStorage.instagram_username).then(function(instagram_feed) {
+    //     controller.set('instagram', instagram_feed);
+    //   });
+    // },
+  },
   content: [],
   momentUpdateFormat: 'h:mm a',
   xbox_last_updated: function() {

@@ -1,23 +1,26 @@
 /*jshint -W117 */
 var DashboardRoute = Ember.Route.extend({
-  actions: {
-    setupController: function(controller) {
-      // Get data
-      this.getXboxProfile(controller);
-      this.getInstagramFeed(controller);
-    },
 
+  setupController: function(controller) {
+    // Get data
+    this.send('getXboxProfile', controller);
+    // controller.fuck(controller);
+  },
+
+  actions: {
     // Methods to get data for each module
     getXboxProfile: function(controller) {
-      App.Xboxprofile.find(localStorage.gamertag).then(function(xboxprofile) {
+      console.log('DashboardController.actions.getXboxProfile')
+      Xboxprofile.find(localStorage.gamertag).then(function(xboxprofile) {
         controller.set('xbox', xboxprofile);
       });
     },
     getInstagramFeed: function(controller) {
-      App.Instagram.find(localStorage.instagram_username).then(function(instagram_feed) {
+      Instagram.find(localStorage.instagram_username).then(function(instagram_feed) {
         controller.set('instagram', instagram_feed);
       });
     },
+
     openConfig: function() {
       this.render('modal', {
         into: 'dashboard',
