@@ -1,0 +1,51 @@
+<div class="container">
+  <!-- Jumbotron -->
+  <div class="jumbotron">
+    <h1>Dashboard</h1>
+    <p class="lead">Keep up on social media</p>
+    <p><a class="btn btn-lg btn-success" href="#" {{action openConfig}}>Configure your accounts</a>{{outlet modal}}
+    </p>
+  </div>
+  <!-- Jumbotron -->
+  <div class="row">
+    <div class="col-md-4">
+      <!-- Xbox -->
+
+      {{partial xboxprofile}}
+
+      <!-- /Xbox -->
+
+    </div>
+    <!-- .col-lg-4 -->
+
+    <div class="col-md-4">
+
+      <!-- Instagram -->
+
+      {{partial instagram}}
+
+      <!-- /Instagram -->
+
+
+
+    </div>
+    <!-- .col-lg-4 -->
+
+    <div class="col-md-4">
+
+
+
+      <!-- Twitter -->
+
+      {{partial twitter}}
+
+      <!-- /Twitter -->
+
+
+
+    </div>
+    <!-- .col-lg-4 -->
+  </div>
+  <!-- .row -->
+</div>
+<!-- .container -->

@@ -1,0 +1,23 @@
+ <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Xbox Live - {{gamertag}}</h3>
+
+          {{#if controller.xbox.online}}
+             {{{controller.xbox.presence}}}
+          {{else}}
+            {{{controller.xbox.presence}}}
+          {{/if}}
+    </div>
+    <div class="panel-body">
+     {{#if controller.xbox.recentactivities}} 
+       {{#collection Ember.ListView contentBinding="controller.xbox.recentactivities"
+          height=300 rowHeight=155 width=270}}
+          <img class="thumbnail" {{bind-attr src="artwork.small"}}>
+          <a target="_blank" {{bind-attr href="infoUrl"}}>{{{title}}} </a>- {{lastPlayed}}
+        {{/collection}}
+      {{else}}
+       <p class="loading">Loading data <img src="assets/loading.gif"></p>
+      {{/if}} <!-- /if -->   
+
+    </div> <!-- panel-body-->
+  </div> <!-- panel -->

@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Instagram - {{instagram_username}}</h3>
+    Last updated: {{instagram_last_updated}}
+  </div>
+  <div class="panel-body">
+
+    {{#if controller.instagram}} {{#collection Ember.ListView contentBinding="controller.instagram" height=300 rowHeight=175 width=270}}
+    <a target="_blank" {{bind-attr href="link" }}>
+      <img class="thumbnail" {{bind-attr src="images.thumbnail.url" }}>
+    </a>- {{createdTime}} - {{#if location}}
+    <a target="_blank" {{bind-attr href="locationUrl" }}>
+      <i class="icon-map-marker icon-2x"></i>
+    </a>
+    {{/if}} {{/collection}} {{else}}Loading data
+    <img src="assets/loading.gif">{{/if}}
+    <!-- /if -->
+
+  </div>
+  <!-- panel-body-->
+</div>
+<!-- panel -->

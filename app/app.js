@@ -8,7 +8,7 @@ var App = Ember.Application.create({
   Resolver: Resolver,
   Router: Ember.Router.extend({
     router: router
-  })
+  }),
 });
 
 export default App;

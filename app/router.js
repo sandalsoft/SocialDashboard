@@ -1,7 +1,8 @@
 var router = Ember.Router.map(function(){
-  // this.resource('posts', function() {
-  //   this.route('new');
-  // });
+  this.resource("dashboard");
+  this.resource("xboxprofile");
+  this.resource("twitter");
+  this.resource("instagram");
 });
 
 export default router;
