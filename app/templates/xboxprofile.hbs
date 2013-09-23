@@ -2,9 +2,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
       <img src="/assets/xbox_logo.png" style="width:65px; height:20px;">
-        <center>Xbox Live</center><br>
-        {{xbox.gamertag}}
-        </h3>
+        Xbox Live - {{xbox.gamertag}}</h3>
 
           {{#if xbox.online}}
              {{{xbox.presence}}}
@@ -19,7 +17,6 @@
           <img class="thumbnail" {{bind-attr src="artwork.small"}}>
           <a target="_blank" {{bind-attr href="infoUrl"}}>{{{title}}} </a>- {{lastPlayed}}
         {{/collection}}
-
       {{else}}
        <p class="loading">Loading data <img src="assets/loading.gif"></p>
       {{/if}} <!-- /if -->   
