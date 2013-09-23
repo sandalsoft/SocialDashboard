@@ -1,19 +1,6 @@
 /*jshint -W117 */
 
 var DashboardController = Em.ObjectController.extend({
-  fuck: function(controller) {
-    console.log('fuck!');
-  },
-  actions: {
-    // // Methods to get data for each module
-
-
-    // getInstagramFeed: function(controller) {
-    //   Instagram.find(localStorage.instagram_username).then(function(instagram_feed) {
-    //     controller.set('instagram', instagram_feed);
-    //   });
-    // },
-  },
   content: [],
   momentUpdateFormat: 'h:mm a',
   xbox_last_updated: function() {

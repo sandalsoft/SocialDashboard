@@ -14,10 +14,6 @@ var DashboardRoute = Ember.Route.extend({
   },
 
   actions: {
-    getStuff: function() {
-      console.log('piss off');
-      Stuff.find();
-    },
     // Methods to get data for each module
     getXboxProfile: function(controller) {
       console.log('DashboardController.actions.getXboxProfile');
@@ -37,7 +33,7 @@ var DashboardRoute = Ember.Route.extend({
         outlet: 'modal'
       });
 
-      dashbaordCon = this.controllerFor('dashboard');
+      var dashbaordCon = this.controllerFor('dashboard');
       dashbaordCon.set('gamertag_prev', dashbaordCon.get('gamertag'));
       dashbaordCon.set('instagram_username_prev', dashbaordCon.get('instagram_username'));
 
@@ -56,7 +52,7 @@ var DashboardRoute = Ember.Route.extend({
     },
     saveConfig: function(params) {
       // Get DashboardController
-      dashbaordCon = this.controllerFor('dashboard');
+      var dashbaordCon = this.controllerFor('dashboard');
 
       // Update data feeds if usernames in config change
       // Pass dashboardController to the methods so they stuff their return values into 
@@ -65,12 +61,12 @@ var DashboardRoute = Ember.Route.extend({
       // Xbox check
       if (dashbaordCon.get('gamertag') !== dashbaordCon.get('gamertag_prev')) {
         this.xbox = null;
-        this.getXboxProfile(dashbaordCon);
+        this.send('getXboxProfile', dashbaordCon);
       }
       // Instagram check
       if (dashbaordCon.get('instagram_username') !== dashbaordCon.get('instagram_username_prev')) {
         this.instagram = null;
-        this.getInstagramFeed(dashbaordCon);
+        this.send('getInstagramFeed', dashbaordCon);
       }
 
       // close modal
