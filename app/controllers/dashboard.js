@@ -3,6 +3,10 @@
 var DashboardController = Em.ObjectController.extend({
   content: [],
   momentUpdateFormat: 'h:mm a',
+  xboxChanged: function() {
+    console.log("xbox changed: " + this.xbox);
+  }.property('xbox'),
+
   xbox_last_updated: function() {
     return moment().format(this.get('momentUpdateFormat'));
   }.property(),
