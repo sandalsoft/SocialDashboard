@@ -10,8 +10,9 @@ Instagram.reopenClass({
     return (Instagram.access_token) ? true : false;
   },
   getUserid: function(username) {
-    var promise = null;
+    var promise;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
+      console.log('Instagram.getUserid()');
 
       // Check local storage for userid.
       // if (/^\d+$/.test(localStorage.instagram_userid)) {
@@ -52,25 +53,28 @@ Instagram.reopenClass({
   find: function(userid) {
     var promise = null;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
-      console.log('Insta getting feed');
-      App.Instagram.getUserid(localStorage.instagram_username).then(function(userid) {
+      console.log('Instagram.find()');
+      Instagram.getUserid(localStorage.instagram_username).then(function(userid) {
+
         var feed = Em.A();
         resolve($.ajax({
             url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent?access_token=' + localStorage.instagramtoken,
             type: 'GET',
             dataType: 'JSONP',
+            timeout: 7500,
           }).fail(function(error) {
             // return 
-            console.log(JSON.stringify(error));
+            console.log("ERROR: Instagram.find().$.ajax() FAIL - " + JSON.stringify(error));
           }).then(function(json) {
+            // console.log("got instagram feed: " + JSON.stringify(json));
             if (json.meta.code !== 200) {
-              console.log('ERROR: Instagram ' + JSON.stringify(json));
+              console.log('ERROR: Instagram.find().$.ajax !200 - ' + JSON.stringify(json));
               // handleInstagramError(json.meta);
               // return json.meta;
             } // if{} 
 
             json.data.forEach(function(activity) {
-              // console.log('entry: ' + JSON.stringify(entry.images.thumbnail.url));
+              // console.log('entry: ' + JSON.stringify(activity.images.thumbnail.url));
               var entry = Instagramactivity.create(activity);
               feed.addObject(entry);
             });

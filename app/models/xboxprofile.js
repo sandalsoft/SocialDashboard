@@ -6,9 +6,9 @@ var Xboxprofile = Ember.Object.extend();
 
 Xboxprofile.reopenClass({
   find: function(gamertag) {
-    var promise = null;
+    var promise;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
-      console.log('xbox get');
+      console.log('xboxprofile find()');
       resolve($.ajax({
           url: 'https://www.xboxleaders.com/api/2.0/profile.json?gamertag=' + gamertag,
           type: 'GET',
@@ -27,7 +27,7 @@ Xboxprofile.reopenClass({
           }); //forEach()
           profile.recentactivities = recentactivities;
           // console.log('profile; ' + JSON.stringify(profile));
-          console.log('xbox done');
+          console.log('xboxprofile done');
           return profile;
         }) //ajax()
       ); //resolve
