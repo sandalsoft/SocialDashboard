@@ -1,8 +1,12 @@
 /*jshint -W117 */
+
+import Xboxactivity from 'appkit/models/xboxactivity';
+
 var Xboxprofile = Ember.Object.extend();
 
 Xboxprofile.reopenClass({
   find: function(gamertag) {
+    var promise = null;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
       console.log('xbox get');
       resolve($.ajax({
@@ -15,10 +19,10 @@ Xboxprofile.reopenClass({
           console.log("ERROR: Xbox getProfile " + JSON.stringify(error));
         }).then(function(json) {
           // getJSON Success
-          var profile = App.Xboxprofile.create(json.data);
+          var profile = Xboxprofile.create(json.data);
           var recentactivities = Em.A();
           profile.recentactivity.forEach(function(activity) {
-            var recentactivity = App.Xboxactivity.create(activity);
+            var recentactivity = Xboxactivity.create(activity);
             recentactivities.pushObject(recentactivity);
           }); //forEach()
           profile.recentactivities = recentactivities;

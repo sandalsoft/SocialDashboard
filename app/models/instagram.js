@@ -1,13 +1,16 @@
 /*jshint -W117 */
+import Instagramactivity from 'appkit/models/instagramactivity';
+
 var Instagram = Ember.Object.extend({});
 // "348191526.0bc1b88.913be5df5fa145f7a06de980d086592e"
 Instagram.reopenClass({
   access_token: localStorage.instagramtoken,
 
   isAuthorized: function() {
-    return (App.Instagram.access_token) ? true : false;
+    return (Instagram.access_token) ? true : false;
   },
   getUserid: function(username) {
+    var promise = null;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
 
       // Check local storage for userid.
@@ -47,6 +50,7 @@ Instagram.reopenClass({
   }, // getUserid
 
   find: function(userid) {
+    var promise = null;
     return promise = new Ember.RSVP.Promise(function(resolve, reject) {
       console.log('Insta getting feed');
       App.Instagram.getUserid(localStorage.instagram_username).then(function(userid) {
@@ -67,7 +71,7 @@ Instagram.reopenClass({
 
             json.data.forEach(function(activity) {
               // console.log('entry: ' + JSON.stringify(entry.images.thumbnail.url));
-              var entry = App.Instagramactivity.create(activity);
+              var entry = Instagramactivity.create(activity);
               feed.addObject(entry);
             });
             console.log('Insta done');
